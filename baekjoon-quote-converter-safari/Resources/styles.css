@@ -1,0 +1,40 @@
+/* 변환 결과 박스 */
+.boj-quote-result-box {
+  margin-top: 8px !important;
+  background: #f0f4ff !important;
+  border: 2px solid #667eea !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.boj-quote-result-box::after {
+  content: '클릭하여 복사';
+  position: absolute;
+  top: 4px;
+  right: 8px;
+  font-size: 11px;
+  color: #667eea;
+  opacity: 0.7;
+}
+
+.boj-quote-result-box:hover {
+  background: #e8edff !important;
+  border-color: #764ba2 !important;
+}
+
+.boj-quote-result-box:hover::after {
+  opacity: 1;
+}
+
+/* 복사 완료 시 */
+.boj-quote-result-box.copied {
+  background: #d4edda !important;
+  border-color: #28a745 !important;
+}
+
+.boj-quote-result-box.copied::after {
+  content: '복사됨!';
+  color: #28a745;
+  opacity: 1;
+}
