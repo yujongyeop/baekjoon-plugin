@@ -1,4 +1,5 @@
-/* 변환 결과 박스 */
+/* ========== 따옴표 변환 결과 박스 ========== */
+
 .boj-quote-result-box {
   margin-top: 8px !important;
   background: #f0f4ff !important;
@@ -27,13 +28,133 @@
   opacity: 1;
 }
 
-/* 복사 완료 시 */
 .boj-quote-result-box.copied {
   background: #d4edda !important;
   border-color: #28a745 !important;
 }
 
 .boj-quote-result-box.copied::after {
+  content: '복사됨!';
+  color: #28a745;
+  opacity: 1;
+}
+
+/* ========== JUnit 테스트 코드 생성 ========== */
+
+#boj-test-generator {
+  margin-top: 24px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fafafa;
+}
+
+.boj-test-title {
+  font-size: 20px;
+  margin: 0 0 14px 0;
+}
+
+.boj-test-input-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+#boj-class-name {
+  flex: 1;
+  padding: 10px 14px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  transition: border-color 0.2s;
+}
+
+#boj-class-name:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+#boj-class-name.boj-input-error {
+  border-color: #e74c3c;
+  animation: boj-shake 0.3s ease;
+}
+
+@keyframes boj-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+#boj-generate-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+#boj-generate-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+#boj-generate-btn:active {
+  transform: translateY(0);
+}
+
+/* 테스트 코드 결과 박스 */
+.boj-test-result-box {
+  display: block;
+  margin-top: 14px !important;
+  background: #1e1e1e !important;
+  color: #d4d4d4 !important;
+  border: 2px solid #333 !important;
+  border-radius: 6px;
+  padding: 16px !important;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow-x: auto;
+  white-space: pre;
+  word-wrap: normal;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.boj-test-result-box::after {
+  content: '클릭하여 복사';
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  font-size: 11px;
+  color: #888;
+  opacity: 0.7;
+}
+
+.boj-test-result-box:hover {
+  border-color: #667eea !important;
+}
+
+.boj-test-result-box:hover::after {
+  opacity: 1;
+  color: #667eea;
+}
+
+.boj-test-result-box.copied {
+  border-color: #28a745 !important;
+}
+
+.boj-test-result-box.copied::after {
   content: '복사됨!';
   color: #28a745;
   opacity: 1;
