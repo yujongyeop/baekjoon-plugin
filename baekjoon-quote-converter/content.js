@@ -65,9 +65,9 @@
     return pairs;
   }
 
-  // 입력 텍스트를 setInput용 문자열로 변환
-  function toSetInputString(text) {
-    return text.split('\n').join('\\n');
+  // Java 문자열 리터럴용 이스케이프
+  function escapeJavaString(str) {
+    return str.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, '\\n');
   }
 
   // JUnit 테스트 코드 생성
@@ -76,8 +76,8 @@
     if (pairs.length === 0) return '// 예제를 찾을 수 없습니다.';
 
     const testMethods = pairs.map((pair) => {
-      const inputStr = toSetInputString(pair.input);
-      const outputStr = pair.output.trim();
+      const inputStr = escapeJavaString(pair.input);
+      const outputStr = escapeJavaString(pair.output.trim());
       return `
     @Test
     void 예제${pair.index}() throws IOException {
